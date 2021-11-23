@@ -1,0 +1,1 @@
+{"ast":null,"code":"import Header from \"./Header\";\nexport { Header };","map":{"version":3,"sources":["/home/thomas/ReactNativeProjects/FoodDeliveryApp/components/index.js"],"names":["Header"],"mappings":"AAAA,OAAOA,MAAP;AAEA,SACIA,MADJ","sourcesContent":["import Header from \"./Header\"\n\nexport {\n    Header\n}\n\n\n\n\n\n\n\n"]},"metadata":{},"sourceType":"module"}
