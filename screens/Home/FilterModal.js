@@ -9,7 +9,9 @@ import {
 } from "react-native";
 
 import {
-    IconButton
+    IconButton,
+    TwoPointSlider,
+    TextButton
 } from "../../components"
 import { COLORS, FONTS, SIZES, constants, icons } from "../../constants";
 import ScrollViewBase from "react-native-web/dist/exports/ScrollView/ScrollViewBase";
@@ -36,6 +38,9 @@ const FilterModal = ({ isVisible, onClose }) => {
     // Creo questa const invece di usare direttamente isVisible perchè
     // poi sara più facile animare il Modal con tutti i filtri
     const [showFilterModal, setShowFilterModal] = React.useState(isVisible)
+    const [deliveryTime, setDeliveryTime] = React.useState("")
+    const [ratings, setRatings] = React.useState("")
+    const [tags, setTags] = React.useState("")
 
     React.useEffect(() => {
         if (showFilterModal) {
@@ -63,6 +68,60 @@ const FilterModal = ({ isVisible, onClose }) => {
             <Section
                 title="Distance"
             >
+                <View
+                    style={{
+                        align: 'center'
+                    }}
+                >
+                    <TwoPointSlider
+                        values={[3, 10]}
+                        min={1}
+                        max={20}
+                        postfix={"km"}
+                        onValuesChange={(values) => console.log (values)}
+                    />
+                </View>
+
+            </Section>
+        )
+    }
+
+    function renderDeliveryTime() {
+        return(
+            <Section
+                title="Delivery Time"
+                containerStyle={{
+                    marginTop: 40
+                }}
+            >
+                <View
+                    style={{
+                        flexDirection: 'row',
+                        flexMap: 'wrap'
+                    }}
+                >
+                    {constants.delivery_time.map((item, index) => {
+                        return (
+                            <TextButton
+                                key={`delivery_time-${index}`}
+                                label={item.label}
+                                labelStyle={{
+                                    color: item.id == deliveryTime ? COLORS.white : COLORS.gray,
+                                    //...FONTS.body3
+                                }}
+                                buttonContainerStyle={{
+                                    width: "30%",
+                                    height: 50,
+                                    margin: 5,
+                                    alignItems: 'center',
+                                    borderRadius: SIZES.base,
+                                    backgroundColor: item.id == deliveryTime ? COLORS.primary : COLORS.lightGray2
+                                }}
+                                onPress={() => setDeliveryTime(item.id)}
+                            />
+                        )
+                    })}
+                </View>
 
             </Section>
         )
@@ -149,6 +208,8 @@ const FilterModal = ({ isVisible, onClose }) => {
                         {/*Distance Section*/}
                         {renderDistance()}
 
+                        {/*Delivery time section*/}
+                        {renderDeliveryTime()}
 
 
                     </ScrollView>
