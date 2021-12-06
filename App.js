@@ -2,6 +2,17 @@ import React from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 import { NavigationContainer } from '@react-navigation/native';
 
+
+
+import {
+    OnBoarding,
+
+    SignIn,
+    SignUp,
+    ForgotPassword,
+    Otp
+} from './screens'
+
 import CustomDrawer from "./navigation/CustomDrawer";
 
 import { createStore, applyMiddleware } from "redux";
@@ -15,6 +26,45 @@ const store = createStore(
     rootReducer,
     applyMiddleware(thunk)
 )
+
+// const App = () => {
+//
+//     return (
+//         <NavigationContainer>
+//             <Stack.Navigator
+//                 screenOptions={{
+//                     headerShown: false
+//                 }}
+//                 initialRouteName={'OnBoarding'}
+//             >
+//                 <Stack.Screen
+//                     name="OnBoarding"
+//                     component={OnBoarding}
+//                 />
+//
+//                 <Stack.Screen
+//                     name="SignIn"
+//                     component={SignIn}
+//                 />
+//
+//                 <Stack.Screen
+//                     name="SignUp"
+//                     component={SignUp}
+//                 />
+//
+//                 <Stack.Screen
+//                     name="ForgotPassword"
+//                     component={ForgotPassword}
+//                 />
+//
+//                 <Stack.Screen
+//                     name="Otp"
+//                     component={Otp}
+//                 />
+//             </Stack.Navigator>
+//         </NavigationContainer>
+//     )
+// }
 
 const App = () => {
   return (
@@ -35,5 +85,7 @@ const App = () => {
       </Provider>
   )
 }
+
+
 
 export default App
